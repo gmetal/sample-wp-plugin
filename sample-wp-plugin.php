@@ -8,6 +8,11 @@
  Author URI: http://localhost/wordpress
  */
 
+include_once 'sample-wp-widget.php';
+add_action( 'widgets_init', function(){
+	register_widget( 'Hello_World_Widget' );
+});
+
 add_filter( 'the_title', 'modify_titles');
 
 function modify_titles( $title ) {
