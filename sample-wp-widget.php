@@ -7,11 +7,18 @@ class Hello_World_Widget extends WP_Widget {
 				'classname' => 'hello_world_widget',
 				'description' => 'Hello World Widget!' 
 		);
+		
+		wp_enqueue_script('sample-plugin-script', plugins_url('/js/sample.js', __FILE__), array('jquery'), '1.0.0', true); 
+		
 		parent::__construct ( 'hello_world_widget', 'Hello World Widget', $widget_ops );
 	}
 	public function widget($args, $instance) {
 		echo $args ['before_widget'];
 		echo '<p>' . esc_html__ ( 'Hello, ' . $instance ['name'], 'text_domain' ) . '</p>';
+		echo '<table id="my_tbl"></table>';
+		echo '<button id="click_btn">Click me!</button><br/>';
+		echo '<button id="hide_btn">Hide Table!</button><br/>';
+		echo '<button id="show_btn">Show Table!</button>';
 		echo $args ['after_widget'];
 	}
 	public function form($instance) {
